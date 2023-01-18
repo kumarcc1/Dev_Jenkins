@@ -1,0 +1,20 @@
+pipeline {
+    agent {
+        label 'sserver'
+    }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+                cleanWs()
+                sh 'mkdir abc'
+                sh 'ls -lart'
+                sh 'pwd'
+                sleep 30
+                build('Multiple_stages')
+            }
+             
+        }
+    }
+    
+}
