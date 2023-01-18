@@ -1,0 +1,65 @@
+
+pipeline {
+    agent any
+    
+    // triggers{
+    //     // cron('* * * * *')
+    //     pollSCM('* * * * *')
+    // }
+    options{
+        retry(3)
+        buildDiscarder(logRotator(numToKeepStr: '3', daysToKeepStr: '1'))
+        disableConcurrentBuilds()
+        // timeout(time:20,unit:'SECONDS')
+        timestamps()
+    }
+    stages {
+        stage('ProjectNG'){
+            steps{
+                cleanWs()
+                sh """
+                echo "helloWorld" > a
+                echo "helloWorld" > b
+                echo "helloWorld" > c
+                echo "helloWorld" > d
+                """
+                sh "ls -lart && pwd"
+            }
+            post{
+        always{
+            echo 'verify always post action'
+        }
+        success{
+            build('ProjectONGC/labels')
+        }
+        failure{
+            cleanWs()
+        }
+    }
+        }
+        
+        stage('Hello') {
+            // options{
+            //     retry(3)
+            // }
+            steps {
+                // cleanWs()
+                echo 'Hello World'
+                // sh 'mkdir $folder'
+                sh 'ls -lart'
+                sh 'pwd'
+                print BUILD_URL
+                // sh "echo tool name is $tool"
+                // print pet
+                // retry(3){
+                    sh "ls -lartiou"
+                    // sleep 60
+                // }
+                // build('projectA/test')
+                // build('projectB/test')
+            }
+        }
+    }
+    
+}
+
