@@ -10,8 +10,17 @@ pipeline {
 options {
 disableConcurrentBuilds()
 timestamps()
- buildDiscarder(logRotator(numToKeepStr: '3', daysToKeepStr: '1'))
 }
+    parameters{
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        
+    }
 //     options {
 
 //     buildDiscarder(
@@ -29,14 +38,14 @@ timestamps()
 // }
     
        stages {
-        stage('This NG Projectt'){
+        stage('ProjectNG'){
             steps{
                 cleanWs()
-                sh 'mkdir $Choice'
+                sh 'mkdir $CHOICES'
                 sh 'mkdir Slack'
                 sh 'mkdir TEST'
                 sh 'mkdir Deploy'
-                sh "echo tool name is $tool"
+                sh "echo tool name is $PERSON"
                 echo 'The assinged task completed on jenkins'
                 print BUILD_URL
                 
