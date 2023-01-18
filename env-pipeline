@@ -1,0 +1,47 @@
+//def test = "Build"
+
+pipeline {
+    agent {
+        label 'sserver'
+    }
+    environment{
+        env = "IAM"
+    }
+    // triggers{
+    //     cron('* * * * *')
+    // }
+    options{
+        timestamps()
+       buildDiscarder(
+        logRotator(
+            // number of build logs to keep
+            numToKeepStr:'5',
+            // history to keep in days
+            daysToKeepStr: '1',
+            // artifacts are kept for days
+            artifactDaysToKeepStr: '5',
+            // number of builds have their artifacts kept
+            artifactNumToKeepStr: '5'
+        )
+    ) 
+    disableConcurrentBuilds()
+    
+    }
+    
+    parameters{
+        string(name:'mypet',defaultValue:'Mounyy',description:'name of mypet')
+    }
+    stages {
+        stage('Hello Puppy'){
+            steps {
+                echo 'Hello Puppy'
+                //sh 'ls -lart'
+                sh 'pwd'
+                sh 'echo mypet name is $mypet'
+                print mypet
+                sh 'print env'
+                
+            }
+        }
+    }
+}
