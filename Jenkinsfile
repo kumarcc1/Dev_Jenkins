@@ -21,7 +21,10 @@ pipeline {
         }
         stage('ProjectONGC'){
             steps{
-                sh 'Test'
+                sh 'mkdir Test'
+                sh 'hostname'
+                sleep 15
+                cleanWs()
             }
         }
     }
