@@ -23,7 +23,7 @@ pipeline {
             steps{
                 sh 'mkdir ONGCParallel'
                 sh 'ls -lart && pwd'
-                build('ProjectNG/Multiple_stages')
+                
                 sh 'ls -lart & pwd'
                 sh 'cat /etc/passwd'
             }
