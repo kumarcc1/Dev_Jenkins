@@ -23,17 +23,12 @@ pipeline {
             steps{
                 script{
                     sh 'mkdir ONGCParallel'
-                dir('ONGCParallel'){
-                      try{
-                        sh 'mkdir devopstest'
-                        sh "echo hello > a"
-                        sh 'cat a'
-                        }catch (Exception e){
-                            echo 'folder already exist'
-                        }
+                    dir('ONGCParallel'){
+                        try{
+                            sh 'mkdir Test'
+                        } catch (Exception e)
+                    }
                 }
-       
-                
                 sh 'ls -lart & pwd'
                 sh 'cat /etc/passwd'
             }
