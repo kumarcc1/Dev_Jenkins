@@ -21,8 +21,18 @@ pipeline {
         }
         stage('ProjectONGC'){
             steps{
-                sh 'mkdir ONGCParallel'
-                sh 'ls -lart && pwd'
+                script{
+                    sh 'mkdir ONGCParallel'
+                dir('ONGCParallel'){
+                      try{
+                        sh 'mkdir devopstest'
+                        sh "echo hello > a"
+                        sh 'cat a'
+                        }catch (Exception e){
+                            echo 'folder already exist'
+                        }
+                
+       
                 
                 sh 'ls -lart & pwd'
                 sh 'cat /etc/passwd'
