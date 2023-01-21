@@ -2,7 +2,7 @@
 
 pipeline {
     agent {
-        label 'sserver'
+        label 'maven'
     }
     environment{
         env = "IAM"
