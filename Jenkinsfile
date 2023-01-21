@@ -27,7 +27,9 @@ pipeline {
                         try{
                             sh 'mkdir Test'
                         } 
-                        catch(Exception e)
+                        catch(Exception e){
+                            echo 'the Folder already exist'
+                        }
                         } 
                     }
                 }
