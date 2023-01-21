@@ -31,7 +31,7 @@ pipeline {
                         }catch (Exception e){
                             echo 'folder already exist'
                         }
-                
+                }
        
                 
                 sh 'ls -lart & pwd'
