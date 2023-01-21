@@ -26,13 +26,12 @@ pipeline {
                     dir('ONGCParallel'){
                         try{
                             sh 'mkdir Test'
-                        }catch (Exception e) {
-                            echo 'the folder already exist'
-                        }
+                        } 
+                        catch(Exception e)
+                        } 
                     }
                 }
-                sh 'ls -lart & pwd'
-                sh 'cat /etc/passwd'
+
             }
         }
     }
