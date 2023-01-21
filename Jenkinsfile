@@ -26,7 +26,9 @@ pipeline {
                     dir('ONGCParallel'){
                         try{
                             sh 'mkdir Test'
-                        } catch (Exception e)
+                        } catch (Exception e){
+                            echo 'the folder already exist'
+                        }
                     }
                 }
                 sh 'ls -lart & pwd'
