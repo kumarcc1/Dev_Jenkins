@@ -7,10 +7,10 @@ pipeline {
         pollSCM('* * * * *')
     }
 
-options {
-disableConcurrentBuilds()
-timestamps()
-}
+// options {
+// disableConcurrentBuilds()
+// timestamps()
+// }
     parameters{
          string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
@@ -35,6 +35,8 @@ timestamps()
             artifactNumToKeepStr: '5'
         )
     )
+        disableConcurrentBuilds()
+        timestamps()
 }
     
        stages {
