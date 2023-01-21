@@ -21,21 +21,8 @@ pipeline {
         }
         stage('ProjectONGC'){
             steps{
-                script{
-                    sh 'mkdir ONGCParallel'
-                    dir('ONGCParallel'){
-                        try{
-                            sh 'mkdir Test'
-                        } 
-                        catch(Exception e){
-                            echo 'the Folder already exist'
-                        }
-                        } 
-                    }
-                }
-
+                sh 'Test'
             }
         }
     }
-}
 }
