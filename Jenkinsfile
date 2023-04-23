@@ -18,7 +18,7 @@ pipeline {
 
         booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
 
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three', 'four'], description: 'Pick something')
         
     }
     options {
